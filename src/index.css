@@ -1,3 +1,7 @@
+/* Import monospace fonts */
+/* TODO: Import font locally */
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Space+Mono:wght@400;700&display=swap');
+
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -117,4 +121,68 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Custom styles for the photo editor */
+.font-mono {
+  font-family: 'Space Mono', 'Courier Prime', 'Courier New', monospace;
+}
+
+.font-typewriter {
+  font-family: 'Courier Prime', 'Courier New', monospace;
+}
+
+/* Canvas styling */
+canvas {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* Ensure proper aspect ratio for story preview */
+.story-preview {
+  aspect-ratio: 9 / 16;
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Focus styles */
+input:focus, textarea:focus, button:focus {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+/* File input styling */
+input[type="file"] {
+  display: none;
+}
+
+/* Prevent layout shifts and unwanted scrolling */
+html, body {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* Ensure framer-motion animations don't cause scroll */
+.framer-motion-container {
+  overflow: hidden;
+}
+
+/* Prevent scroll during animations */
+body.modal-open {
+  overflow: hidden;
+}
+
+/* Smooth animation performance */
+* {
+  will-change: auto;
+}
+
+/* Optimize for animations */
+.motion-div {
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
 }
