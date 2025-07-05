@@ -11,7 +11,10 @@
     "prepare": "husky",
     "prettier:check": "prettier --check .",
     "prettier:fix": "prettier --ignore-unknown --write .",
-    "check:ci": "pnpm run lint && pnpm run prettier:check"
+    "check:ci": "pnpm run lint && pnpm run prettier:check && pnpm run knip:ci",
+    "knip": "knip",
+    "knip:fix": "knip --fix",
+    "knip:ci": "knip --no-progress"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.3",
@@ -37,6 +40,7 @@
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^16.2.0",
     "husky": "^9.1.7",
+    "knip": "^5.61.3",
     "lint-staged": "^16.1.2",
     "prettier": "3.6.2",
     "tw-animate-css": "^1.3.5",
