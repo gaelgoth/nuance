@@ -14,7 +14,7 @@ export const Footer = () => {
           <span className="font-mono text-sm">v1.0.0</span>
           <div className="w-px h-4 bg-white opacity-30" />
           <a
-            href="https://github.com"
+            href="https://github.com/gaelgoth/nuance"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
