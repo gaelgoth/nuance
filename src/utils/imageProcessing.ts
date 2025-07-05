@@ -43,10 +43,10 @@ export const createStoryCanvas = (
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d')!;
 
-  // Instagram story dimensions (9:16 ratio)
+  // For 9:16 ratio
   const storyWidth = 1080;
   const storyHeight = 1920;
-  const marginSize = 120;
+  const marginSize = 15;
 
   canvas.width = storyWidth;
   canvas.height = storyHeight;
@@ -85,17 +85,17 @@ export const createStoryCanvas = (
   ctx.fillStyle = '#000000';
   ctx.font = 'bold 50px "Courier New", monospace'; // TODO: change font
 
-  // Draw camera info (top-left) - positioned closer to image
+  // Draw camera info (top-left)
   if (settings.showCameraInfo) {
     const cameraText = `${metadata.cameraModel}`;
     const lensText = `${metadata.lens}`;
 
-    const textY = imageY - 90; // 40px above image + some space for two lines
+    const textY = imageY - 70;
     ctx.fillText(cameraText, marginSize, textY);
     ctx.fillText(lensText, marginSize, textY + 50);
   }
 
-  // Draw settings (top-right) - positioned closer to image
+  // Draw settings (top-right)
   if (settings.showSettings) {
     const settingsText =
       metadata.aperture || metadata.filmStock || metadata.customSettings;
