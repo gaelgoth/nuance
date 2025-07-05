@@ -20,10 +20,3 @@ export interface EditableSettings {
   showSettings: boolean;
   showColorPalette: boolean;
 }
-
-export interface ProcessedImage {
-  id: string;
-  canvas: HTMLCanvasElement;
-  metadata: PhotoMetadata;
-  settings: EditableSettings;
-}

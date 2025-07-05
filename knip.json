@@ -1,0 +1,9 @@
+{
+  "entry": ["src/main.{js,ts,tsx}"],
+  "project": ["**/*.{js,ts,tsx}"],
+  "ignoreDependencies": [
+    //  Iggnore CSS dependencies
+    "tailwindcss",
+    "tw-animate-css"
+  ]
+}
