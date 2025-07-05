@@ -1,5 +1,5 @@
-import { extractColors } from "extract-colors";
-import type { PhotoMetadata, EditableSettings } from "../types";
+import { extractColors } from 'extract-colors';
+import type { PhotoMetadata, EditableSettings } from '../types';
 
 export const extractColorsFromImage = async (
   imageElement: HTMLImageElement,
@@ -19,19 +19,19 @@ export const extractColorsFromImage = async (
     // # TODO: Ensure we always have 5 colors, filling with neutral colors if necessary
     while (extractedColors.length < 5) {
       const fallbackColors = [
-        "#000000",
-        "#333333",
-        "#666666",
-        "#999999",
-        "#CCCCCC",
+        '#000000',
+        '#333333',
+        '#666666',
+        '#999999',
+        '#CCCCCC',
       ];
       extractedColors.push(fallbackColors[extractedColors.length]);
     }
 
     return extractedColors;
   } catch (error) {
-    console.error("Error extracting colors:", error);
-    return ["#000000", "#333333", "#666666", "#999999", "#CCCCCC"];
+    console.error('Error extracting colors:', error);
+    return ['#000000', '#333333', '#666666', '#999999', '#CCCCCC'];
   }
 };
 
@@ -40,8 +40,8 @@ export const createStoryCanvas = (
   metadata: PhotoMetadata,
   settings: EditableSettings,
 ): HTMLCanvasElement => {
-  const canvas = document.createElement("canvas");
-  const ctx = canvas.getContext("2d")!;
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d')!;
 
   // Instagram story dimensions (9:16 ratio)
   const storyWidth = 1080;
@@ -52,7 +52,7 @@ export const createStoryCanvas = (
   canvas.height = storyHeight;
 
   // Fill with white background
-  ctx.fillStyle = "#FFFFFF";
+  ctx.fillStyle = '#FFFFFF';
   ctx.fillRect(0, 0, storyWidth, storyHeight);
 
   // Calculate image dimensions to fit within the story format
@@ -82,7 +82,7 @@ export const createStoryCanvas = (
   ctx.drawImage(image, imageX, imageY, imageWidth, imageHeight);
 
   // Set font for text - made larger for better readability
-  ctx.fillStyle = "#000000";
+  ctx.fillStyle = '#000000';
   ctx.font = 'bold 50px "Courier New", monospace'; // TODO: change font
 
   // Draw camera info (top-left) - positioned closer to image
@@ -130,7 +130,7 @@ export const createStoryCanvas = (
 };
 
 export const downloadCanvas = (canvas: HTMLCanvasElement, filename: string) => {
-  const link = document.createElement("a");
+  const link = document.createElement('a');
   link.download = filename;
   link.href = canvas.toDataURL();
   link.click();

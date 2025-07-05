@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
-import { Camera } from "lucide-react";
+import { motion } from 'framer-motion';
+import { Camera } from 'lucide-react';
 
 export function Header() {
   return (

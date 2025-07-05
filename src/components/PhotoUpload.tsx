@@ -1,12 +1,12 @@
-import { useCallback, useState } from "react";
-import { motion } from "framer-motion";
-import { Upload } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import type { PhotoMetadata } from "@/types";
+import { useCallback, useState } from 'react';
+import { motion } from 'framer-motion';
+import { Upload } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import type { PhotoMetadata } from '@/types';
 import {
   extractColorsFromImage,
   generateUniqueId,
-} from "@/utils/imageProcessing";
+} from '@/utils/imageProcessing';
 
 interface PhotoUploadProps {
   onPhotosUploaded: (photos: PhotoMetadata[]) => void;
@@ -42,11 +42,11 @@ export const PhotoUpload = ({
           id: generateUniqueId(),
           file,
           preview,
-          cameraModel: "Camera Model",
-          lens: "Lens Model",
-          aperture: "f/2.8",
-          filmStock: "Film Stock",
-          customSettings: "Custom Settings",
+          cameraModel: 'Camera Model',
+          lens: 'Lens Model',
+          aperture: 'f/2.8',
+          filmStock: 'Film Stock',
+          customSettings: 'Custom Settings',
           colors,
         };
 
@@ -62,9 +62,9 @@ export const PhotoUpload = ({
   const handleDrag = useCallback((e: React.DragEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    if (e.type === "dragenter" || e.type === "dragover") {
+    if (e.type === 'dragenter' || e.type === 'dragover') {
       setDragActive(true);
-    } else if (e.type === "dragleave") {
+    } else if (e.type === 'dragleave') {
       setDragActive(false);
     }
   }, []);
@@ -76,7 +76,7 @@ export const PhotoUpload = ({
       setDragActive(false);
 
       const files = Array.from(e.dataTransfer.files).filter((file) =>
-        file.type.startsWith("image/"),
+        file.type.startsWith('image/'),
       );
 
       if (files.length > 0) {
@@ -90,7 +90,7 @@ export const PhotoUpload = ({
   const handleFileInput = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const files = Array.from(e.target.files || []).filter((file) =>
-        file.type.startsWith("image/"),
+        file.type.startsWith('image/'),
       );
 
       if (files.length > 0) {
@@ -109,8 +109,8 @@ export const PhotoUpload = ({
         transition={{ duration: 0.4 }}
         className={`border-2 border-dashed rounded-lg p-8 text-center transition-colors ${
           dragActive
-            ? "border-black bg-gray-50"
-            : "border-gray-300 hover:border-gray-400"
+            ? 'border-black bg-gray-50'
+            : 'border-gray-300 hover:border-gray-400'
         }`}
         onDragEnter={handleDrag}
         onDragLeave={handleDrag}

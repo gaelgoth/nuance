@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { X, Check } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import type { EditableSettings } from "@/types";
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { X, Check } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import type { EditableSettings } from '@/types';
 
 interface BulkSettingsEditorProps {
   isOpen: boolean;
@@ -16,11 +16,11 @@ export const BulkSettingsEditor = ({
   onApply,
 }: BulkSettingsEditorProps) => {
   const [settings, setSettings] = useState<Partial<EditableSettings>>({
-    cameraModel: "",
-    lens: "",
-    aperture: "",
-    filmStock: "",
-    customSettings: "",
+    cameraModel: '',
+    lens: '',
+    aperture: '',
+    filmStock: '',
+    customSettings: '',
     showCameraInfo: true,
     showSettings: true,
     showColorPalette: true,
@@ -29,7 +29,7 @@ export const BulkSettingsEditor = ({
   const handleApply = () => {
     const filteredSettings = Object.entries(settings).reduce(
       (acc, [key, value]) => {
-        if (value !== "" && value !== null && value !== undefined) {
+        if (value !== '' && value !== null && value !== undefined) {
           (acc as Record<string, unknown>)[key] = value;
         }
         return acc;
@@ -56,7 +56,7 @@ export const BulkSettingsEditor = ({
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.95, opacity: 0 }}
-            transition={{ type: "spring", damping: 25, stiffness: 400 }}
+            transition={{ type: 'spring', damping: 25, stiffness: 400 }}
             className="bg-white rounded-lg shadow-xl p-6 w-full max-w-md mx-4"
             onClick={(e) => e.stopPropagation()}
           >
@@ -79,7 +79,7 @@ export const BulkSettingsEditor = ({
                 </label>
                 <input
                   type="text"
-                  value={settings.cameraModel || ""}
+                  value={settings.cameraModel || ''}
                   onChange={(e) =>
                     setSettings((prev) => ({
                       ...prev,
@@ -97,7 +97,7 @@ export const BulkSettingsEditor = ({
                 </label>
                 <input
                   type="text"
-                  value={settings.lens || ""}
+                  value={settings.lens || ''}
                   onChange={(e) =>
                     setSettings((prev) => ({ ...prev, lens: e.target.value }))
                   }
@@ -112,7 +112,7 @@ export const BulkSettingsEditor = ({
                 </label>
                 <input
                   type="text"
-                  value={settings.aperture || ""}
+                  value={settings.aperture || ''}
                   onChange={(e) =>
                     setSettings((prev) => ({
                       ...prev,
@@ -130,7 +130,7 @@ export const BulkSettingsEditor = ({
                 </label>
                 <input
                   type="text"
-                  value={settings.filmStock || ""}
+                  value={settings.filmStock || ''}
                   onChange={(e) =>
                     setSettings((prev) => ({
                       ...prev,
@@ -147,7 +147,7 @@ export const BulkSettingsEditor = ({
                   Custom Settings
                 </label>
                 <textarea
-                  value={settings.customSettings || ""}
+                  value={settings.customSettings || ''}
                   onChange={(e) =>
                     setSettings((prev) => ({
                       ...prev,

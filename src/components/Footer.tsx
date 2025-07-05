@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
-import { Github } from "lucide-react";
+import { motion } from 'framer-motion';
+import { Github } from 'lucide-react';
 
 export const Footer = () => {
   return (
