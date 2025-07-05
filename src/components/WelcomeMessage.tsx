@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
-import { Camera, Upload, Palette, Download } from "lucide-react";
+import { motion } from 'framer-motion';
+import { Camera, Upload, Palette, Download } from 'lucide-react';
 
 export const WelcomeMessage = () => {
   return (

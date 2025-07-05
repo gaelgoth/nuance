@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { Download, Settings } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import type { PhotoMetadata, EditableSettings } from "@/types";
-import { createStoryCanvas, downloadCanvas } from "@/utils/imageProcessing";
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { Download, Settings } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import type { PhotoMetadata, EditableSettings } from '@/types';
+import { createStoryCanvas, downloadCanvas } from '@/utils/imageProcessing';
 
 interface PhotoEditorProps {
   photo: PhotoMetadata;
@@ -104,7 +104,7 @@ export const PhotoEditor = ({
               <canvas
                 ref={(canvas) => {
                   if (canvas && previewCanvas) {
-                    const ctx = canvas.getContext("2d")!;
+                    const ctx = canvas.getContext('2d')!;
                     const scale = Math.min(
                       canvas.offsetWidth / previewCanvas.width,
                       canvas.offsetHeight / previewCanvas.height,
@@ -133,7 +133,7 @@ export const PhotoEditor = ({
             exit={{ opacity: 0, scaleY: 0.95 }}
             transition={{ duration: 0.2 }}
             className="space-y-4 border-t border-gray-200 pt-4"
-            style={{ transformOrigin: "top" }}
+            style={{ transformOrigin: 'top' }}
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
@@ -144,7 +144,7 @@ export const PhotoEditor = ({
                   type="text"
                   value={settings.cameraModel}
                   onChange={(e) =>
-                    handleSettingChange("cameraModel", e.target.value)
+                    handleSettingChange('cameraModel', e.target.value)
                   }
                   className="w-full px-3 py-2 border border-gray-300 rounded-md font-mono text-sm"
                 />
@@ -156,7 +156,7 @@ export const PhotoEditor = ({
                 <input
                   type="text"
                   value={settings.lens}
-                  onChange={(e) => handleSettingChange("lens", e.target.value)}
+                  onChange={(e) => handleSettingChange('lens', e.target.value)}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md font-mono text-sm"
                 />
               </div>
@@ -168,7 +168,7 @@ export const PhotoEditor = ({
                   type="text"
                   value={settings.aperture}
                   onChange={(e) =>
-                    handleSettingChange("aperture", e.target.value)
+                    handleSettingChange('aperture', e.target.value)
                   }
                   className="w-full px-3 py-2 border border-gray-300 rounded-md font-mono text-sm"
                 />
@@ -181,7 +181,7 @@ export const PhotoEditor = ({
                   type="text"
                   value={settings.filmStock}
                   onChange={(e) =>
-                    handleSettingChange("filmStock", e.target.value)
+                    handleSettingChange('filmStock', e.target.value)
                   }
                   className="w-full px-3 py-2 border border-gray-300 rounded-md font-mono text-sm"
                 />
@@ -195,7 +195,7 @@ export const PhotoEditor = ({
               <textarea
                 value={settings.customSettings}
                 onChange={(e) =>
-                  handleSettingChange("customSettings", e.target.value)
+                  handleSettingChange('customSettings', e.target.value)
                 }
                 rows={2}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md font-mono text-sm"
@@ -208,7 +208,7 @@ export const PhotoEditor = ({
                   type="checkbox"
                   checked={settings.showCameraInfo}
                   onChange={(e) =>
-                    handleSettingChange("showCameraInfo", e.target.checked)
+                    handleSettingChange('showCameraInfo', e.target.checked)
                   }
                   className="rounded"
                 />
@@ -219,7 +219,7 @@ export const PhotoEditor = ({
                   type="checkbox"
                   checked={settings.showSettings}
                   onChange={(e) =>
-                    handleSettingChange("showSettings", e.target.checked)
+                    handleSettingChange('showSettings', e.target.checked)
                   }
                   className="rounded"
                 />
@@ -230,7 +230,7 @@ export const PhotoEditor = ({
                   type="checkbox"
                   checked={settings.showColorPalette}
                   onChange={(e) =>
-                    handleSettingChange("showColorPalette", e.target.checked)
+                    handleSettingChange('showColorPalette', e.target.checked)
                   }
                   className="rounded"
                 />

@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "prepare": "husky",
     "prettier:check": "prettier --check .",
-    "prettier:fix": "prettier --ignore-unknown --write ."
+    "prettier:fix": "prettier --ignore-unknown --write .",
+    "check:ci": "pnpm run lint && pnpm run prettier:check"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.3",

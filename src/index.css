@@ -2,8 +2,8 @@
 /* TODO: Import font locally */
 @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Space+Mono:wght@400;700&display=swap');
 
-@import "tailwindcss";
-@import "tw-animate-css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -150,18 +150,21 @@ canvas {
 }
 
 /* Focus styles */
-input:focus, textarea:focus, button:focus {
+input:focus,
+textarea:focus,
+button:focus {
   outline: 2px solid #000;
   outline-offset: 2px;
 }
 
 /* File input styling */
-input[type="file"] {
+input[type='file'] {
   display: none;
 }
 
 /* Prevent layout shifts and unwanted scrolling */
-html, body {
+html,
+body {
   overflow-x: hidden;
   scroll-behavior: smooth;
 }

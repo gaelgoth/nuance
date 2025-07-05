@@ -1,12 +1,12 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { PhotoUpload } from "@/components/PhotoUpload";
-import { PhotoEditor } from "@/components/PhotoEditor";
-import { BulkActions } from "@/components/BulkActions";
-import { BulkSettingsEditor } from "@/components/BulkSettingsEditor";
-import { Footer } from "@/components/Footer";
-import type { PhotoMetadata, EditableSettings } from "@/types";
-import { createStoryCanvas, downloadCanvas } from "@/utils/imageProcessing";
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { PhotoUpload } from '@/components/PhotoUpload';
+import { PhotoEditor } from '@/components/PhotoEditor';
+import { BulkActions } from '@/components/BulkActions';
+import { BulkSettingsEditor } from '@/components/BulkSettingsEditor';
+import { Footer } from '@/components/Footer';
+import type { PhotoMetadata, EditableSettings } from '@/types';
+import { createStoryCanvas, downloadCanvas } from '@/utils/imageProcessing';
 
 function App() {
   const [photos, setPhotos] = useState<PhotoMetadata[]>([]);

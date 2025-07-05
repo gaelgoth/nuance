@@ -1,7 +1,7 @@
-import { motion } from "framer-motion";
-import { Download, Settings, Trash2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import type { PhotoMetadata } from "@/types";
+import { motion } from 'framer-motion';
+import { Download, Settings, Trash2 } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import type { PhotoMetadata } from '@/types';
 
 interface BulkActionsProps {
   photos: PhotoMetadata[];
@@ -26,7 +26,7 @@ export const BulkActions = ({
       className="flex flex-wrap items-center justify-center gap-4 p-4 bg-gray-50 rounded-lg border border-gray-200"
     >
       <span className="font-mono text-sm text-gray-600">
-        {photos.length} photo{photos.length !== 1 ? "s" : ""} ready
+        {photos.length} photo{photos.length !== 1 ? 's' : ''} ready
       </span>
 
       <div className="flex items-center gap-2">
