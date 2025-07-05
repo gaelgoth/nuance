@@ -4,7 +4,6 @@ import { PhotoUpload } from "@/components/PhotoUpload";
 import { PhotoEditor } from "@/components/PhotoEditor";
 import { BulkActions } from "@/components/BulkActions";
 import { BulkSettingsEditor } from "@/components/BulkSettingsEditor";
-import { AnimatedBackground } from "@/components/AnimatedBackground";
 import { Footer } from "@/components/Footer";
 import type { PhotoMetadata, EditableSettings } from "@/types";
 import { createStoryCanvas, downloadCanvas } from "@/utils/imageProcessing";
@@ -88,8 +87,6 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white text-black relative flex flex-col overflow-x-hidden">
-      <AnimatedBackground />
-
       <main className="flex-1 flex flex-col justify-center py-8">
         <div className="max-w-7xl mx-auto px-4 w-full">
           {photos.length === 0 ? (
