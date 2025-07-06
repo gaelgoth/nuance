@@ -7,7 +7,8 @@ on:
     branches: main
 
 jobs:
-  build-and-test:
+  build:
+    name: Build
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -37,8 +38,9 @@ jobs:
       #   run: npx playwright test
 
   deploy:
+    name: Deploy to GitHub Pages
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    needs: build-and-test
+    needs: build
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -57,8 +59,6 @@ jobs:
           cache: 'pnpm'
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-      - name: Run checks
-        run: pnpm run check:ci
       - name: Build
         run: pnpm run build
       - name: Upload artifact
