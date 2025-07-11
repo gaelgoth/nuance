@@ -98,7 +98,7 @@ function App() {
         }}
       >
         <div className="absolute top-4 right-4 z-50">
-          <ThemeSwitcher defaultValue="dark" />
+          <ThemeSwitcher defaultValue="light" />
         </div>
 
         <main className="flex-1 flex flex-col justify-center py-8">
