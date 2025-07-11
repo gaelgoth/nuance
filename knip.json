@@ -4,6 +4,8 @@
   "ignoreDependencies": [
     //  Iggnore CSS dependencies
     "tailwindcss",
-    "tw-animate-css"
+    "tw-animate-css",
+    // Ignore fonts
+    "@fontsource/jetbrains-mono"
   ]
 }
