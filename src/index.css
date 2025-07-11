@@ -1,6 +1,7 @@
 /* Import monospace fonts */
 /* TODO: Import font locally */
 @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Space+Mono:wght@400;700&display=swap');
+@import '@fontsource/jetbrains-mono';
 
 @import 'tailwindcss';
 @import 'tw-animate-css';
@@ -125,11 +126,11 @@
 
 /* Custom styles for the photo editor */
 .font-mono {
-  font-family: 'Space Mono', 'Courier Prime', 'Courier New', monospace;
+  font-family: 'JetBrains Mono', monospace;
 }
 
 .font-typewriter {
-  font-family: 'Courier Prime', 'Courier New', monospace;
+  font-family: 'JetBrains Mono', monospace;
 }
 
 /* Canvas styling */
