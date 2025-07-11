@@ -23,9 +23,17 @@ export const BulkActions = ({
       initial={{ opacity: 0, scale: 0.98 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.3 }}
-      className="flex flex-wrap items-center justify-center gap-4 p-4 bg-gray-50 rounded-lg border border-gray-200"
+      className="flex flex-wrap items-center justify-center gap-4 p-4 rounded-lg border"
+      style={{
+        background: 'var(--card)',
+        color: 'var(--card-foreground)',
+        borderColor: 'var(--border)',
+      }}
     >
-      <span className="font-mono text-sm text-gray-600">
+      <span
+        className="font-mono text-sm"
+        style={{ color: 'var(--muted-foreground)' }}
+      >
         {photos.length} photo{photos.length !== 1 ? 's' : ''} ready
       </span>
 
@@ -35,6 +43,10 @@ export const BulkActions = ({
           size="sm"
           onClick={onToggleBulkSettings}
           className="font-mono"
+          style={{
+            background: 'var(--secondary)',
+            color: 'var(--secondary-foreground)',
+          }}
         >
           <Settings className="h-4 w-4 mr-1" />
           Bulk Edit
@@ -45,6 +57,10 @@ export const BulkActions = ({
           size="sm"
           onClick={onDownloadAll}
           className="font-mono"
+          style={{
+            background: 'var(--primary)',
+            color: 'var(--primary-foreground)',
+          }}
         >
           <Download className="h-4 w-4 mr-1" />
           Download All
@@ -54,7 +70,11 @@ export const BulkActions = ({
           variant="outline"
           size="sm"
           onClick={onClearAll}
-          className="font-mono text-red-600 hover:text-red-700"
+          className="font-mono"
+          style={{
+            background: 'var(--destructive)',
+            color: 'var(--primary-foreground)',
+          }}
         >
           <Trash2 className="h-4 w-4 mr-1" />
           Clear All

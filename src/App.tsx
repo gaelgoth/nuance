@@ -7,6 +7,8 @@ import { BulkSettingsEditor } from '@/components/BulkSettingsEditor';
 import { Footer } from '@/components/Footer';
 import type { PhotoMetadata, EditableSettings } from '@/types';
 import { createStoryCanvas, downloadCanvas } from '@/utils/imageProcessing';
+import { ThemeSwitcher } from '@/components/ThemeSwitcher';
+import { ThemeProvider } from '@/components/ThemeProvider';
 
 function App() {
   const [photos, setPhotos] = useState<PhotoMetadata[]>([]);
@@ -86,71 +88,84 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-black relative flex flex-col overflow-x-hidden">
-      <main className="flex-1 flex flex-col justify-center py-8">
-        <div className="max-w-7xl mx-auto px-4 w-full">
-          {photos.length === 0 ? (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-              className="text-center flex flex-col justify-center min-h-[60vh]"
-            >
-              <PhotoUpload
-                onPhotosUploaded={handlePhotosUploaded}
-                isProcessing={isProcessing}
-              />
-            </motion.div>
-          ) : (
-            <div className="space-y-8">
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <div
+        className="min-h-screen bg-white text-black relative flex flex-col overflow-x-hidden"
+        style={{
+          background: 'var(--background)',
+          color: 'var(--foreground)',
+          fontFamily: 'Space Mono, Courier Prime, monospace',
+        }}
+      >
+        <div className="absolute top-4 right-4 z-50">
+          <ThemeSwitcher defaultValue="dark" />
+        </div>
+
+        <main className="flex-1 flex flex-col justify-center py-8">
+          <div className="max-w-7xl mx-auto px-4 w-full">
+            {photos.length === 0 ? (
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5 }}
-                className="text-center"
+                className="text-center flex flex-col justify-center min-h-[60vh]"
               >
                 <PhotoUpload
                   onPhotosUploaded={handlePhotosUploaded}
                   isProcessing={isProcessing}
                 />
               </motion.div>
+            ) : (
+              <div className="space-y-8">
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5 }}
+                  className="text-center"
+                >
+                  <PhotoUpload
+                    onPhotosUploaded={handlePhotosUploaded}
+                    isProcessing={isProcessing}
+                  />
+                </motion.div>
 
-              <BulkActions
-                photos={photos}
-                onDownloadAll={handleDownloadAll}
-                onClearAll={handleClearAll}
-                onToggleBulkSettings={() => setShowBulkSettings(true)}
-              />
+                <BulkActions
+                  photos={photos}
+                  onDownloadAll={handleDownloadAll}
+                  onClearAll={handleClearAll}
+                  onToggleBulkSettings={() => setShowBulkSettings(true)}
+                />
 
-              <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
-                {photos.map((photo, index) => (
-                  <motion.div
-                    key={photo.id}
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.3, delay: index * 0.05 }}
-                  >
-                    <PhotoEditor
-                      photo={photo}
-                      onSettingsChange={handleSettingsChange}
-                      onRemove={handleRemovePhoto}
-                    />
-                  </motion.div>
-                ))}
+                <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+                  {photos.map((photo, index) => (
+                    <motion.div
+                      key={photo.id}
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.3, delay: index * 0.05 }}
+                    >
+                      <PhotoEditor
+                        photo={photo}
+                        onSettingsChange={handleSettingsChange}
+                        onRemove={handleRemovePhoto}
+                      />
+                    </motion.div>
+                  ))}
+                </div>
               </div>
-            </div>
-          )}
-        </div>
-      </main>
+            )}
+          </div>
+        </main>
 
-      <BulkSettingsEditor
-        isOpen={showBulkSettings}
-        onClose={() => setShowBulkSettings(false)}
-        onApply={handleBulkSettingsApply}
-      />
+        <BulkSettingsEditor
+          isOpen={showBulkSettings}
+          onClose={() => setShowBulkSettings(false)}
+          onApply={handleBulkSettingsApply}
+        />
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </ThemeProvider>
   );
 }
 

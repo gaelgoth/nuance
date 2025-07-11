@@ -62,10 +62,18 @@ export const PhotoEditor = ({
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.3 }}
       className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm"
+      style={{
+        background: 'var(--card)',
+        color: 'var(--card-foreground)',
+        borderColor: 'var(--border)',
+      }}
     >
-      <div className="p-4 border-b border-gray-200">
+      <div className="p-4 border-b" style={{ borderColor: 'var(--border)' }}>
         <div className="flex items-center justify-between">
-          <h3 className="font-mono font-semibold truncate">
+          <h3
+            className="font-mono font-semibold truncate"
+            style={{ color: 'var(--card-foreground)' }}
+          >
             {photo.file.name}
           </h3>
           <div className="flex items-center space-x-2">
@@ -74,6 +82,10 @@ export const PhotoEditor = ({
               size="sm"
               onClick={() => setShowSettings(!showSettings)}
               className="font-mono"
+              style={{
+                background: 'var(--secondary)',
+                color: 'var(--secondary-foreground)',
+              }}
             >
               <Settings className="h-4 w-4" />
             </Button>
@@ -82,6 +94,10 @@ export const PhotoEditor = ({
               size="sm"
               onClick={handleDownload}
               className="font-mono"
+              style={{
+                background: 'var(--primary)',
+                color: 'var(--primary-foreground)',
+              }}
             >
               <Download className="h-4 w-4" />
             </Button>
@@ -89,7 +105,11 @@ export const PhotoEditor = ({
               variant="outline"
               size="sm"
               onClick={() => onRemove(photo.id)}
-              className="font-mono text-red-600 hover:text-red-700"
+              className="font-mono"
+              style={{
+                background: 'var(--destructive)',
+                color: 'var(--primary-foreground)',
+              }}
             >
               Remove
             </Button>
@@ -99,7 +119,10 @@ export const PhotoEditor = ({
 
       <div className="p-4">
         <div className="mb-4">
-          <div className="aspect-[9/16] bg-gray-100 rounded-lg overflow-hidden max-w-xs mx-auto story-preview">
+          <div
+            className="aspect-[9/16] rounded-lg overflow-hidden max-w-xs mx-auto story-preview"
+            style={{ background: '#fff' }}
+          >
             {previewCanvas && (
               <canvas
                 ref={(canvas) => {
