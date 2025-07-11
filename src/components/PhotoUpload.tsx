@@ -7,15 +7,18 @@ import {
   extractColorsFromImage,
   generateUniqueId,
 } from '@/utils/imageProcessing';
+import { NeonGradientCard } from '@/components/magicui/neon-gradient-card';
 
 interface PhotoUploadProps {
   onPhotosUploaded: (photos: PhotoMetadata[]) => void;
   isProcessing: boolean;
+  isEditorMode?: boolean;
 }
 
 export const PhotoUpload = ({
   onPhotosUploaded,
   isProcessing,
+  isEditorMode = false,
 }: PhotoUploadProps) => {
   const [dragActive, setDragActive] = useState(false);
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
@@ -101,41 +104,62 @@ export const PhotoUpload = ({
     [processFiles],
   );
 
+  const uploadContent = (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.98 }}
+      animate={{
+        opacity: 1,
+        scale: dragActive ? 1.02 : 1,
+        filter: dragActive ? 'brightness(1.1)' : 'brightness(1)',
+      }}
+      transition={{ duration: 0.3, ease: 'easeOut' }}
+      className={`text-center transition-all duration-300 ${
+        dragActive ? 'shadow-lg' : ''
+      }`}
+      onDragEnter={handleDrag}
+      onDragLeave={handleDrag}
+      onDragOver={handleDrag}
+      onDrop={handleDrop}
+    >
+      <Upload className="mx-auto h-12 w-12 mb-4" />
+      <h3 className="text-lg font-mono font-semibold mb-2">Upload Photos</h3>
+      <p className="font-mono mb-4">
+        Drop images here or click to select files
+      </p>
+      <input
+        type="file"
+        multiple
+        accept="image/*"
+        onChange={handleFileInput}
+        className="hidden"
+        id="file-upload"
+      />
+      <label htmlFor="file-upload">
+        <Button asChild>
+          <span className="font-mono">Select Files</span>
+        </Button>
+      </label>
+    </motion.div>
+  );
+
   return (
     <div className="w-full max-w-4xl mx-auto p-6">
-      <motion.div
-        initial={{ opacity: 0, scale: 0.98 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.4 }}
-        className={`border-2 border-dashed rounded-lg p-8 text-center transition-colors ${
-          dragActive
-            ? 'border-black bg-gray-50'
-            : 'border-gray-300 hover:border-gray-400'
-        }`}
-        onDragEnter={handleDrag}
-        onDragLeave={handleDrag}
-        onDragOver={handleDrag}
-        onDrop={handleDrop}
-      >
-        <Upload className="mx-auto h-12 w-12 text-gray-400 mb-4" />
-        <h3 className="text-lg font-mono font-semibold mb-2">Upload Photos</h3>
-        <p className="text-gray-600 font-mono mb-4">
-          Drop images here or click to select files
-        </p>
-        <input
-          type="file"
-          multiple
-          accept="image/*"
-          onChange={handleFileInput}
-          className="hidden"
-          id="file-upload"
-        />
-        <label htmlFor="file-upload">
-          <Button asChild>
-            <span className="font-mono">Select Files</span>
-          </Button>
-        </label>
-      </motion.div>
+      {isEditorMode ? (
+        <div
+          className="max-w-full border rounded-lg p-6"
+          style={{
+            background: 'var(--card)',
+            color: 'var(--card-foreground)',
+            borderColor: 'var(--border)',
+          }}
+        >
+          {uploadContent}
+        </div>
+      ) : (
+        <NeonGradientCard className="max-w-full">
+          {uploadContent}
+        </NeonGradientCard>
+      )}
 
       {isProcessing && (
         <motion.div

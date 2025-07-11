@@ -126,6 +126,7 @@ function App() {
                   <PhotoUpload
                     onPhotosUploaded={handlePhotosUploaded}
                     isProcessing={isProcessing}
+                    isEditorMode={true}
                   />
                 </motion.div>
 
