@@ -109,13 +109,11 @@ export const PhotoUpload = ({
       initial={{ opacity: 0, scale: 0.98 }}
       animate={{
         opacity: 1,
-        scale: dragActive ? 1.02 : 1,
-        filter: dragActive ? 'brightness(1.1)' : 'brightness(1)',
+        scale: dragActive ? 1.15 : 1,
+        filter: dragActive ? 'brightness(1.5)' : 'brightness(1)',
       }}
       transition={{ duration: 0.3, ease: 'easeOut' }}
-      className={`text-center transition-all duration-300 ${
-        dragActive ? 'shadow-lg' : ''
-      }`}
+      className={`text-center transition-all duration-300`}
       onDragEnter={handleDrag}
       onDragLeave={handleDrag}
       onDragOver={handleDrag}
@@ -156,7 +154,10 @@ export const PhotoUpload = ({
           {uploadContent}
         </div>
       ) : (
-        <NeonGradientCard className="max-w-full">
+        <NeonGradientCard
+          className="max-w-full"
+          borderSize={dragActive ? 5 : 2}
+        >
           {uploadContent}
         </NeonGradientCard>
       )}

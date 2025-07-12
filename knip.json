@@ -5,6 +5,7 @@
     //  Iggnore CSS dependencies
     "tailwindcss",
     "tw-animate-css",
+    "motion",
     // Ignore fonts
     "@fontsource/jetbrains-mono"
   ]
